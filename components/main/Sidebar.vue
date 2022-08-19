@@ -12,7 +12,7 @@
         <nuxt-link tag="li" v-for="item in structureItems" :key="item.id" :to="item.linkTo">
           <div :class="[`structure__menu-item`, item.id === structureItems.length && `structure__menu-item-last`]">
             <span>{{item.text}}</span>
-            <img :src= "require(`../assets//sidebarContent/icons/${item.icon}.png`)"/>
+            <img :src= "require(`~/assets//sidebarContent/icons/${item.icon}.png`)"/>
           </div>
         </nuxt-link>
       </ul>

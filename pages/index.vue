@@ -42,11 +42,11 @@
 </template>
 
 <script>
-import Slider from "../components/Slider";
-import NewsItem from "../components/NewsItem";
-import Sidebar from "../components/Sidebar";
-import SliderCard from "../components/SliderCard";
-import UsefulLinksSlider from "../components/UsefulLinksSlider";
+import Slider from "../components/main/Slider";
+import NewsItem from "../components/main/NewsItem";
+import Sidebar from "../components/main/Sidebar";
+import SliderCard from "../components/main/SliderCard";
+import UsefulLinksSlider from "../components/main/UsefulLinksSlider";
 export default {
   name: 'IndexPage',
   components: {UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
@@ -78,42 +78,42 @@ export default {
           imgSrc:"news-image1",
           date:"12 авг 2020",
           text:"Предоставление муниципальных услуг в центрах “Мои документы” обретает единый формат",
-          linkTo:"#"
+          linkTo:"/post"
         },
         {
           id:2,
           imgSrc:"news-image1",
           date:"13 авг 2020",
           text:"Cостоялось заседание hr-клуба по вопросам повышения эффективности качества работы hr-служб в подведомственных учреждениях области",
-          linkTo:"#"
+          linkTo:"/post"
         },
         {
           id:3,
           imgSrc:"news-image1",
           date:"14 авг 2020",
           text:'липецкая область участвует в ярмарке вакансий в онлайн-формате',
-          linkTo:"#"
+          linkTo:"/post"
         },
         {
           id:4,
           imgSrc:"news-image1",
           date:"15 авг 2020",
           text:'в рамках hr-форума стартует новый проект',
-          linkTo:"#"
+          linkTo:"/post"
         },
         {
           id:5,
           imgSrc:"news-image1",
           date:"16 авг 2020",
           text:'в рамках hr-форума стартует новый проект',
-          linkTo:"#"
+          linkTo:"/post"
         },
         {
           id:6,
           imgSrc:"news-image1",
           date:"17 авг 2020",
           text:'в рамках hr-форума стартует новый проект',
-          linkTo:"#"
+          linkTo:"/post"
         },
       ],
       cardsInfo:[
@@ -123,21 +123,21 @@ export default {
           date: '12 авг 2020',
           title:'Круто мыслить позитивно, быть здоровым, жить активно!',
           text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'#'
+          linkTo:'/post'
         },
         {id:2,
           imgSrc:'slider1',
           date: '12 авг 2020',
           title:'Круто мыслить позитивно, быть здоровым, жить активно!',
           text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'#'
+          linkTo:'/post'
         },
         {id:3,
           imgSrc:'slider1',
           date: '12 авг 2020',
           title:'Круто мыслить позитивно, быть здоровым, жить активно!',
           text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'#'
+          linkTo:'/post'
         }
       ],
     }

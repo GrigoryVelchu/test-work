@@ -1,7 +1,7 @@
 <template>
 <div class = "news-item">
   <div class = "news-item__img">
-  <img :src = "require(`../assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
+  <img :src = "require(`~/assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
   </div>
   <div class = "news-item__info">
     <span class = "news-item__data gray-thin-text">

@@ -6,7 +6,7 @@
         <h2>
           Последние новости
         </h2>
-        <nuxt-link class = "blue-link" to="#">Показать все &nbsp &#8594</nuxt-link>
+        <BlueLink :address-to="'#'">Показать всё</BlueLink>
       </div>
       <hr/>
 
@@ -47,9 +47,10 @@ import NewsItem from "../components/main/NewsItem";
 import Sidebar from "../components/main/Sidebar";
 import SliderCard from "../components/main/SliderCard";
 import UsefulLinksSlider from "../components/main/UsefulLinksSlider";
+import BlueLink from "../components/UI/BlueLink";
 export default {
   name: 'IndexPage',
-  components: {UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
+  components: {BlueLink, UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
   data(){
     return{
       usefulLinks: [
@@ -149,6 +150,7 @@ export default {
     display: flex
     justify-content: space-between
     flex-wrap: wrap
+    flex: 1 0 auto
   .news-block
     width: 66.6%
     margin-right: 48px

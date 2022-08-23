@@ -26,6 +26,7 @@
     position: relative
     margin-bottom: 64px
     overflow: hidden
+    flex: 0 0 auto
     h1
       font-weight: 600
       font-size: 25px

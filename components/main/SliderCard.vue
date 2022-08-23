@@ -13,14 +13,16 @@
       <p class = "card__text">
         {{cardInfo.text}}
       </p>
-      <nuxt-link class = "blue-link" :to = "cardInfo.linkTo">Читать далее &nbsp &#8594</nuxt-link>
+      <BlueLink :address-to="'/post'">Читать далее</BlueLink>
     </div>
   </div>
 </template>
 
 <script>
+  import BlueLink from "../UI/BlueLink";
   export default {
     name: "SliderCard",
+    components: {BlueLink},
     props: {
       cardInfo: {
         type: Object,

@@ -46,6 +46,7 @@
     background: url("~/assets/footerContent/img/lip_flag_bcg.png") no-repeat center 30px, #041369
     color: white
     padding-top: 30px
+    flex: 0 0 auto
     .footer__container
       .footer__main-info
         display: flex

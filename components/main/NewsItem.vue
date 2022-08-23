@@ -10,14 +10,16 @@
     <p class = news-item__text>
       {{newsItem.text}}
     </p>
-    <nuxt-link class = "blue-link" :to="newsItem.linkTo">Читать далее &nbsp &#8594</nuxt-link>
+    <BlueLink :address-to="newsItem.linkTo">Читать далее</BlueLink>
   </div>
 </div>
 </template>
 
 <script>
+  import BlueLink from "../UI/BlueLink";
   export default {
     name: "NewsItem",
+    components: {BlueLink},
     props:{
       newsItem:{
         type: Object,

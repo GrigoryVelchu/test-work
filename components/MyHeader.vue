@@ -4,10 +4,6 @@
       <MyNav/>
       <h1>Управление государственной службы и кадровой работы администрации Липецкой области</h1>
     </div>
-          <div class = "header__pattern">
-            <img src = "~assets/headerContent/img/bcg-pattern.svg"/>
-            <img  class = "hr" src = "~assets/headerContent/img/HR.svg">
-          </div>
   </header>
 </template>
 
@@ -21,7 +17,7 @@
 
 <style lang = "sass" scoped>
   .header
-    background : center url("~/assets/headerContent/img/header-bcg.jpg")
+    background : center url("~/assets/headerContent/img/header-bcg2.png") no-repeat, center url("~/assets/headerContent/img/header-bcg.jpg"), linear-gradient(0deg, #143fa4 , #020c69)
     height: 500px
     position: relative
     margin-bottom: 64px

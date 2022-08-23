@@ -11,12 +11,12 @@
       <hr/>
 
       <div class = "news-block__slider">
-        <Slider :cardsInfo = "cardsInfo"/>
+        <Slider :cardsInfo = "$store.state.cardsInfo.cardsInfo"/>
       </div>
       <hr/>
 
       <div class = "news-block__news">
-        <div v-for ="newsItem in newsItems" :key="newsItem.id">
+        <div v-for ="newsItem in $store.state.newsItems.newsItems" :key="newsItem.id">
           <NewsItem :newsItem="newsItem" />
           <hr/>
         </div>
@@ -34,8 +34,7 @@
       </h2>
       <hr>
 
-      <UsefulLinksSlider :usefulLinks = "usefulLinks"/>
-
+      <UsefulLinksSlider :usefulLinks = "$store.state.usefulLinks.usefulLinks"/>
     </section>
 
   </main>
@@ -52,96 +51,7 @@ export default {
   name: 'IndexPage',
   components: {BlueLink, UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
   data(){
-    return{
-      usefulLinks: [
-        {
-          id:1, title:"Министерсво просвещения Рф", linkText:"edu.gov.ru"
-        },
-        {
-          id:2, title:"Министерсво просветления Рф", linkText:"edu.gov.ru"
-        },
-        {
-          id:3, title:"Министерсво прошения Рф", linkText:"edu.gov.ru"
-        },
-        {
-          id:4, title:"Министерсво прокрастинации Рф", linkText:"edu.gov.ru"
-        },
-        {
-          id:5, title:"Министерсво просвещения Рф", linkText:"edu.gov.ru"
-        },
-        {
-          id:6, title:"Министерсво просвещения Рф", linkText:"edu.gov.ru"
-        },
-      ],
-      newsItems:[
-        {
-          id:1,
-          imgSrc:"news-image1",
-          date:"12 авг 2020",
-          text:"Предоставление муниципальных услуг в центрах “Мои документы” обретает единый формат",
-          linkTo:"/post"
-        },
-        {
-          id:2,
-          imgSrc:"news-image1",
-          date:"13 авг 2020",
-          text:"Cостоялось заседание hr-клуба по вопросам повышения эффективности качества работы hr-служб в подведомственных учреждениях области",
-          linkTo:"/post"
-        },
-        {
-          id:3,
-          imgSrc:"news-image1",
-          date:"14 авг 2020",
-          text:'липецкая область участвует в ярмарке вакансий в онлайн-формате',
-          linkTo:"/post"
-        },
-        {
-          id:4,
-          imgSrc:"news-image1",
-          date:"15 авг 2020",
-          text:'в рамках hr-форума стартует новый проект',
-          linkTo:"/post"
-        },
-        {
-          id:5,
-          imgSrc:"news-image1",
-          date:"16 авг 2020",
-          text:'в рамках hr-форума стартует новый проект',
-          linkTo:"/post"
-        },
-        {
-          id:6,
-          imgSrc:"news-image1",
-          date:"17 авг 2020",
-          text:'в рамках hr-форума стартует новый проект',
-          linkTo:"/post"
-        },
-      ],
-      cardsInfo:[
-        {
-          id:1,
-          imgSrc:'slider1',
-          date: '12 авг 2020',
-          title:'Круто мыслить позитивно, быть здоровым, жить активно!',
-          text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'/post'
-        },
-        {id:2,
-          imgSrc:'slider1',
-          date: '12 авг 2020',
-          title:'Круто мыслить позитивно, быть здоровым, жить активно!',
-          text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'/post'
-        },
-        {id:3,
-          imgSrc:'slider1',
-          date: '12 авг 2020',
-          title:'Круто мыслить позитивно, быть здоровым, жить активно!',
-          text:'Сегодня в свой обеденный перерыв сотрудники управления государственной службы и кадровой работы администрации Липецкой области...',
-          linkTo:'/post'
-        }
-      ],
-    }
+    return{}
   }
 }
 </script>

@@ -24,7 +24,7 @@
 
 <script>
   import NewsItem from "../../components/main/NewsItem";
-  import {mapState} from 'vuex';
+  import {mapState, mapGetters} from 'vuex';
   export default {
     name: "index",
     components: {NewsItem},
@@ -43,15 +43,9 @@
       },
       goToPagan(e,number){
         this.paganNumber = number
-        console.log(this.paganNumber)
       }
     },
     computed:{
-      ...mapState({
-        newsItems:state => state.newsItems.newsItems,
-        searchText:state=>state.newsItems.searchText,
-        searchedFilter:state=>state.newsItems.searchedFilter
-      }),
       paganatedNewsItems(){
         return this.$store.getters['newsItems/searchedNews'].slice((this.paganNumber-1)*(this.newsCount),(this.paganNumber*this.newsCount))
       },

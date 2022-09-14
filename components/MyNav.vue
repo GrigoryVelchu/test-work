@@ -1,14 +1,14 @@
 <template>
     <nav class = "nav-menu">
       <img class ="nav_menu__flag"  @click = "$router.push('/')" src = "~/assets/headerContent/img/lip-flag.png" alt = 'Липецкий герб'>
-      <div class = "nav-menu__items" ref="navMenu">
+      <div class = "nav-menu__items" :class="{'active':showHamburger}" ref="navMenu">
         <nuxt-link class = "nav-menu__item" v-for="item in items" exact to = "/" :key = "item">{{item}}</nuxt-link>
       </div>
       <div class = "nav-menu__specials">
         <img src = "~/assets/headerContent/icons/search.svg"/>
         <img src = "~/assets/headerContent/icons/visibility.svg"/>
       </div>
-      <div class="hamburger" ref = 'hamburger' @click.stop = 'toggleBurgerNav'>
+      <div class="hamburger" :class="{'active':showHamburger}" ref = "hamburger" @click.stop = 'showHamburger = !showHamburger'>
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
@@ -32,14 +32,12 @@
               "Структура",
               "Форум «Вектор развития»",
               "Наставничество",
-              "Реестр образовательных организаций"]
+              "Реестр образовательных организаций"],
+            showHamburger:false
           }
         },
       methods:{
-          toggleBurgerNav(e){
-            e.currentTarget.classList.toggle("active");
-            this.$refs.navMenu.classList.toggle("active")
-          }
+
       },
       mounted(){
           document.getElementsByTagName('body')[0].addEventListener('click',()=>{
@@ -105,7 +103,6 @@
       position: relative;
       padding-top: 1.5rem;
       margin-bottom:5.6rem;
-
     }
     .nav-menu .nav_menu__flag{
       position: absolute;
@@ -117,7 +114,7 @@
       margin-right: 1.75rem;
     }
     .nav-menu__items {
-      position: fixed;
+      position: absolute;
       right: -100%;
       top: 1.5rem;
       flex-direction: column;

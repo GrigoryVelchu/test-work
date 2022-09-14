@@ -1,5 +1,4 @@
 <template>
-  <main>
 
     <div class="post-container">
       <ul class="bread-crumbs">
@@ -19,10 +18,10 @@
         </div>
       </div>
     </div>
-  </main>
-</template>
 
+</template>
 <script>
+
 export default {
   name: "post",
   data() {
@@ -66,12 +65,12 @@ export default {
       color: #9F9F9F
 
   h1
-    font-size: 28px
+    font-size: 1.75rem
     font-weight: 700
     line-height: 34px
 
   .post
-    margin-top: 52px
+    margin-top: 3.25rem
     margin-bottom: 175px
 
     .post__date
@@ -88,5 +87,14 @@ export default {
       line-height: 29px
       text-align: justify
       margin-bottom: 1rem
-
+@media only screen and (max-width: 768px)
+.post-container
+  width: auto
+  padding: 0 0.7rem
+  h1
+    font-size: 1.5rem
+  .post
+    margin-top: 2rem
+    .post__img
+      width: 100%
 </style>

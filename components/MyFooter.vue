@@ -11,7 +11,7 @@
           </div>
           <div class = "footer__contacts">
             <nuxt-link class = "footer__link" to="#">
-              <span class = "footer__adres">г. Липецк, пл. Ленина-Соборная, 1</span>
+              <span class = "footer__adres">г. Липецк, пл. Ленина-Соборная,&nbsp1</span>
             </nuxt-link>
             <nuxt-link class = "footer__link" to="#">
               <span class = "footer__tel">8 (4742) 22-84-45</span>
@@ -103,8 +103,24 @@
       hr
         border-bottom: 0px
         border-color: #ffffff
-
-
-
-
+  @media only screen and (max-width: 768px)
+    .footer
+      height: auto
+      .footer__container
+        padding: 0 0.7rem
+        .footer__main-info
+          flex-wrap: wrap
+          margin-bottom: 1rem
+          .footer__flag-block
+            img
+              display: none
+            .footer__site-name
+              margin: 0
+              text-align: center
+        .footer__down
+          flex-wrap: wrap
+          div
+            text-align: center
+            width: 100%
+            margin-bottom: 1rem
 </style>

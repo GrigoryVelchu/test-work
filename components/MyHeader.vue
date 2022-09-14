@@ -25,7 +25,7 @@
     flex: 0 0 auto
     h1
       font-weight: 600
-      font-size: 25px
+      font-size: 1.5625rem
       color: #FCFDFE
       line-height: 40px
       text-transform: uppercase
@@ -38,4 +38,12 @@
         position: absolute
         right: 170px
         top : 85px
+  @media only screen and (max-width: 768px)
+    .header
+      height: 450px
+      background-position: initial
+      h1
+        padding: 0 0.5rem
+        font-size: 1.5rem
+        text-align: center
 </style>

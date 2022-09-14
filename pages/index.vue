@@ -1,12 +1,12 @@
 <template>
-  <main>
+  <div class = "content">
 
     <section class = "news-block">
       <div class = "news-block__header">
         <h2>
           Последние новости
         </h2>
-        <BlueLink :address-to="'#'">Показать всё</BlueLink>
+        <BlueLink :address-to="'/news'">Показать всё</BlueLink>
       </div>
       <hr/>
 
@@ -37,7 +37,7 @@
       <UsefulLinksSlider :usefulLinks = "$store.state.usefulLinks.usefulLinks"/>
     </section>
 
-  </main>
+  </div>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 <style lang = "sass">
-  main
+  .content
     display: flex
     justify-content: space-between
     flex-wrap: wrap

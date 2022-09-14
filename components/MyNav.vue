@@ -1,14 +1,17 @@
 <template>
     <nav class = "nav-menu">
-      <div class = "nav_menu__flag">
-        <img src = "~/assets/headerContent/img/lip-flag.png">
-      </div>
-      <div class = "nav-menu__items">
-        <nuxt-link class = "nav-menu__item" v-for="item in items" exact to = "/" >{{item}}</nuxt-link>
+      <img class ="nav_menu__flag"  @click = "$router.push('/')" src = "~/assets/headerContent/img/lip-flag.png" alt = 'Липецкий герб'>
+      <div class = "nav-menu__items" ref="navMenu">
+        <nuxt-link class = "nav-menu__item" v-for="item in items" exact to = "/" :key = "item">{{item}}</nuxt-link>
       </div>
       <div class = "nav-menu__specials">
-        <span><img src = "~/assets/headerContent/icons/search.svg"/></span>
-        <span><img src = "~/assets/headerContent/icons/visibility.svg"/></span>
+        <img src = "~/assets/headerContent/icons/search.svg"/>
+        <img src = "~/assets/headerContent/icons/visibility.svg"/>
+      </div>
+      <div class="hamburger" ref = 'hamburger' @click.stop = 'toggleBurgerNav'>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
     </nav>
 </template>
@@ -31,40 +34,125 @@
               "Наставничество",
               "Реестр образовательных организаций"]
           }
-        }
+        },
+      methods:{
+          toggleBurgerNav(e){
+            e.currentTarget.classList.toggle("active");
+            this.$refs.navMenu.classList.toggle("active")
+          }
+      },
+      mounted(){
+          document.getElementsByTagName('body')[0].addEventListener('click',()=>{
+            this.$refs.navMenu.classList.remove("active")
+            this.$refs.hamburger.classList.remove("active")
+          })
+      }
     }
 </script>
 
-<style lang = 'sass' scoped>
-  .nav-menu
-    display: flex
-    justify-content: space-between
-    margin-bottom: 41px
-    .nav_menu__flag
-      width: 78px
-      height: 111px
-      margin-right: 32px
-    .nav-menu__items
-      display: flex
-      width: content-box
-      margin-top: 37px
-      flex-wrap: wrap
-      .nav-menu__item
-        white-space: nowrap
-        color: white
-        font-weight: 400
-        font-size: 14px
-        line-height: 16.94px
-        margin-right: 36px
-        &:hover
-          cursor: pointer
-    .nav-menu__specials
-      display: flex
-      justify-content: space-between
-      margin-top: 34.8px
-      span
-        &:hover
-          cursor: pointer
-        &:first-child
-          margin-right: 28.51px
+<style scoped>
+  .nav-menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 41px; }
+  .nav_menu__flag {
+    width: 78px;
+    height: 111px;
+    margin-right: 32px; }
+  .nav-menu__items {
+    display: flex;
+    width: content-box;
+    margin-top: 37px;
+    flex-wrap: wrap; }
+  .nav-menu__item {
+    white-space: nowrap;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    margin-right: 36px; }
+  .nav-menu__item:hover {
+    cursor: pointer; }
+  .nav-menu__specials {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34.8px; }
+  .nav-menu__specials img{
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+  .nav-menu__specials img:hover {
+    cursor: pointer; }
+  .nav-menu__specials img:first-child {
+    margin-right: 1.75rem; }
+  .hamburger {
+    display: none;
+    margin-right: 1.5rem;
+  }
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+  }
+  @media only screen and (max-width: 768px) {
+    .nav-menu{
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      padding-top: 1.5rem;
+      margin-bottom:5.6rem;
+
+    }
+    .nav-menu .nav_menu__flag{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .nav-menu .nav-menu__specials{
+      margin-top: 0;
+      margin-right: 1.75rem;
+    }
+    .nav-menu__items {
+      position: fixed;
+      right: -100%;
+      top: 1.5rem;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+    .nav-menu__items.active {
+      right: 0;
+      z-index:10;
+    }
+    .nav-menu__item {
+      margin: 1rem 0;
+      color:#5988FF;
+      padding: 0 0.5rem;
+    }
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
 </style>
+<style scoped>
+
+</style>
+

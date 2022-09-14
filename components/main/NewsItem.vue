@@ -10,7 +10,7 @@
     <p class = news-item__text>
       {{newsItem.text}}
     </p>
-    <BlueLink :address-to="newsItem.linkTo">Читать далее</BlueLink>
+    <BlueLink :address-to="`/news/${newsItem.id}`">Читать далее</BlueLink>
   </div>
 </div>
 </template>
@@ -23,7 +23,6 @@
     props:{
       newsItem:{
         type: Object,
-
       }
     },
   }

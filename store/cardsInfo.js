@@ -26,3 +26,8 @@ export const state = () => {
     ],
   }
 }
+export const getters = {
+  getCardsInfo(state){
+    return state.cardsInfo
+  }
+}

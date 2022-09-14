@@ -89,7 +89,7 @@ export const state = () => {
     searchedFilter:'',
     searchText : '',
     filteredItems : [],
-    searchedItems : [],
+    searchedAndFilteredItems:[]
   }
 }
 export const mutations = {
@@ -98,13 +98,16 @@ export const mutations = {
   },
   setSearchText(s,payload){
     s.searchText = payload.text
+  },
+  setFilteredItems(s, payload){
+    s.filteredItems = payload.items
+  },
+  setSearchedAndFilteredItems(s, payload){
+    s.searchedAndFilteredItems = payload.items
   }
 }
 export const actions = {
-
-}
-export const getters = {
-  sortedNews(state){
+  filterNews({state, commit}){
     const doDateFormat = (text)=>{
       const months = new Map([
         ['янв',0],
@@ -131,17 +134,33 @@ export const getters = {
       let [year, thisMonth, day] = splitedText.reverse().map(el=>parseInt(el))
       return new Date (year, thisMonth, day)
     }
-    return[...state.newsItems].sort((news1,news2)=>{
-      if(state.searchedFilter === 'oldest'){
-        return new Date(doDateFormat(news1.date)) - new Date(doDateFormat(news2.date))
-      }
-      else if(state.searchedFilter === 'newest'){
-        return new Date(doDateFormat(news2.date)) - new Date(doDateFormat(news1.date))
-      }
-      else return state.newsItems
-    })
+    commit(
+      'setFilteredItems',
+      {items : [...state.newsItems].sort((news1,news2)=>{
+                  if(state.searchedFilter === 'oldest'){
+                    return new Date(doDateFormat(news1.date)) - new Date(doDateFormat(news2.date))
+                  }
+                  else if(state.searchedFilter === 'newest'){
+                    return new Date(doDateFormat(news2.date)) - new Date(doDateFormat(news1.date))
+                  }
+                  else return state.newsItems
+        })
+      })
   },
-  searchedNews(state, getters){
-    return getters.sortedNews.filter((news)=>news.text.toLowerCase().includes(state.searchText.toLowerCase()))
+  searchNews({commit,state}){
+    commit(
+      'setSearchedAndFilteredItems',
+      {
+      items:state.filteredItems.filter(news=>news.text.toLowerCase().includes(state.searchText.toLowerCase()))
+      }
+    )
+  },
+}
+export const getters = {
+  getNewsItems(state){
+    return state.newsItems
+  },
+  getSearchedAndFilteredItems(state){
+    return state.searchedAndFilteredItems
   }
 }

@@ -39,14 +39,14 @@
         }
       },
       doForward(e){
-        if(this.$route.params.id < this.$store.state.newsItems.newsItems.length){
+        if(this.$route.params.id < this.$store.getters['newsItems/getNewsItems'].length){
           this.$router.push(`${++this.id}`)
         }
       }
     },
     computed:{
       getCurrentNews(){
-        return this.$store.state.newsItems.newsItems.filter(item => (item.id === this.id))[0]
+        return this.$store.getters['newsItems/getNewsItems'].filter(item => (item.id === this.id))[0]
       }
     },
 

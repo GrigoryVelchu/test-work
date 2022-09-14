@@ -11,12 +11,12 @@
       <hr/>
 
       <div class = "news-block__slider">
-        <Slider :cardsInfo = "$store.state.cardsInfo.cardsInfo"/>
+        <Slider :cardsInfo = "cardsInfo"/>
       </div>
       <hr/>
 
       <div class = "news-block__news">
-        <div v-for ="newsItem in $store.state.newsItems.newsItems" :key="newsItem.id">
+        <div v-for ="newsItem in newsItems" :key="newsItem.id">
           <NewsItem :newsItem="newsItem" />
           <hr/>
         </div>
@@ -33,8 +33,7 @@
         Полезные ссылки
       </h2>
       <hr>
-
-      <UsefulLinksSlider :usefulLinks = "$store.state.usefulLinks.usefulLinks"/>
+      <UsefulLinksSlider :usefulLinks = "usefulLinks"/>
     </section>
 
   </div>
@@ -47,11 +46,22 @@ import Sidebar from "../components/main/Sidebar";
 import SliderCard from "../components/main/SliderCard";
 import UsefulLinksSlider from "../components/main/UsefulLinksSlider";
 import BlueLink from "../components/UI/BlueLink";
+import {mapGetters} from 'vuex'
 export default {
   name: 'IndexPage',
   components: {BlueLink, UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
   data(){
     return{}
+  },
+  computed:{
+    ...mapGetters({
+      usefulLinks:'usefulLinks/getUsefulLinks',
+      newsItems:'newsItems/getNewsItems',
+      cardsInfo:'cardsInfo/getCardsInfo'
+    })
+  },
+  mounted(){
+    console.log(this.usefulLinks)
   }
 }
 </script>

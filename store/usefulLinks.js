@@ -22,3 +22,8 @@ export const state = ()=>{
     ],
   }
 }
+export const getters = {
+  getUsefulLinks(state){
+    return state.usefulLinks
+  }
+}

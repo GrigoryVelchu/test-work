@@ -1,21 +1,23 @@
 <template>
   <div class="all-news">
-    <div class = "search">
-      <select @change = "changeFilter">
-        <option value = '' disabled selected>Сортировать</option>
-        <option value = 'newest'>Сначала новые</option>
-        <option value = 'oldest'>Сначала старые</option>
+    <div class="search">
+      <select @change="changeFilter">
+        <option value="disabled" selected>Сортировать</option>
+        <option value="newest">Сначала новые</option>
+        <option value="oldest">Сначала старые</option>
       </select>
       <input @input="changeSearchText" type = "text" placeholder ="Поиск по тексту">
     </div>
     <TransitionGroup  name="list" tag="ul">
-      <li v-for = "item in paganatedNewsItems" :key = "item.id"><news-item :news-item="item" /></li>
+      <li v-for="item in paganatedNewsItems" :key="item.id"><news-item :news-item="item"/></li>
     </TransitionGroup>
-    <div class = 'pagination-block'>
-      <span v-for = "number in getPaganCount"
-            @click = "goToPagan($event, number)"
-            :key = "number"
-            :class = "number === paganNumber?'active': null">
+    <div class='pagination-block'>
+      <span v-for="number in getPaganCount"
+            @click="number>0&&goToPagan($event, number)"
+            :key="number"
+            :class="{
+              'active':number === paganNumber,
+              'disable': ifPaganOne}">
         {{number}}
       </span>
     </div>
@@ -24,7 +26,6 @@
 
 <script>
   import NewsItem from "../../components/main/NewsItem";
-  import {mapState, mapGetters} from 'vuex';
   export default {
     name: "index",
     components: {NewsItem},
@@ -37,9 +38,12 @@
     methods:{
       changeFilter(e){
         this.$store.commit('newsItems/setSearchFilter',{value:e.target.value})
+        this.$store.dispatch('newsItems/filterNews')
+        this.$store.dispatch('newsItems/searchNews')
       },
       changeSearchText(e){
         this.$store.commit('newsItems/setSearchText',{text:e.target.value.trim()})
+        this.$store.dispatch('newsItems/searchNews')
       },
       goToPagan(e,number){
         this.paganNumber = number
@@ -47,13 +51,29 @@
     },
     computed:{
       paganatedNewsItems(){
-        return this.$store.getters['newsItems/searchedNews'].slice((this.paganNumber-1)*(this.newsCount),(this.paganNumber*this.newsCount))
+        const getSearchedAndFilteredItems = this.$store.getters['newsItems/getSearchedAndFilteredItems'];
+        if((((this.paganNumber-1) * this.newsCount) > getSearchedAndFilteredItems.length+1)){
+          this.goToPagan(null,this.paganNumber-1||1)
+        }
+        if(getSearchedAndFilteredItems.length>=4){
+          return getSearchedAndFilteredItems.slice((this.paganNumber-1)*(this.newsCount),(this.paganNumber*this.newsCount))
+        }
+        else{
+          return getSearchedAndFilteredItems
+        }
+
       },
       getPaganCount(){
-        return Math.ceil(this.$store.getters['newsItems/searchedNews'].length/this.newsCount)
+        return Math.ceil(this.$store.getters['newsItems/getSearchedAndFilteredItems'].length/this.newsCount)||1
       },
+      ifPaganOne(){
+        return this.getPaganCount === 1
+      }
     },
-
+    created() {
+      this.$store.commit ('newsItems/setFilteredItems',{items:this.$store.getters['newsItems/getNewsItems']})
+      this.$store.commit('newsItems/setSearchedAndFilteredItems',{items:this.$store.getters['newsItems/getNewsItems']})
+    }
   }
 </script>
 
@@ -92,6 +112,10 @@
       padding:0.7rem 1rem;
       &.active{
         background-color: #5988FF;
+        &.disable{
+          cursor: auto;
+          background-color: lightgrey;
+        }
       }
       &:hover{
         cursor: pointer;

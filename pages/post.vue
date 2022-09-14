@@ -88,13 +88,13 @@ export default {
       text-align: justify
       margin-bottom: 1rem
 @media only screen and (max-width: 768px)
-.post-container
-  width: auto
-  padding: 0 0.7rem
-  h1
-    font-size: 1.5rem
-  .post
-    margin-top: 2rem
-    .post__img
-      width: 100%
+  .post-container
+    width: auto
+    padding: 0 0.7rem
+    h1
+     font-size: 1.5rem
+    .post
+     margin-top: 2rem
+     .post__img
+        width: 100%
 </style>

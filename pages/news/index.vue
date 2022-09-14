@@ -2,6 +2,7 @@
   <div class="all-news">
     <div class = "search">
       <select @change = "changeFilter">
+        <option value = '' disabled selected>Сортировать</option>
         <option value = 'newest'>Сначала новые</option>
         <option value = 'oldest'>Сначала старые</option>
       </select>

@@ -1,5 +1,6 @@
 <template>
   <div class = 'app-container'>
+    <login-modal/>
     <MyHeader/>
     <main>
       <div class="container">
@@ -13,10 +14,11 @@
 <script>
   import MyHeader from "../components/MyHeader";
   import MyFooter from "../components/MyFooter";
+  import loginModal from "../components/UI/loginModal";
 
   export default {
     name:'default',
-    components: {MyFooter, MyHeader},
+    components: {MyFooter, MyHeader, loginModal},
   }
 </script>
 

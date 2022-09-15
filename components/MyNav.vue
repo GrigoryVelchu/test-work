@@ -2,9 +2,15 @@
     <nav class="nav-menu">
       <img class="nav_menu__flag"  @click = "$router.push('/')" src="~/assets/headerContent/img/lip-flag.png" alt="Липецкий герб">
       <div class="nav-menu__items" :class="{'active':showHamburger}" ref="navMenu">
-        <nuxt-link class = "nav-menu__item" v-for="item in items" exact to="/" :key="item">{{item}}</nuxt-link>
+        <nuxt-link class = "nav-menu__item"
+                   v-for="item in items"
+                   exact to="/"
+                   :key="item">
+          {{item}}
+        </nuxt-link>
       </div>
       <div class="nav-menu__specials">
+        <span @click="showModal">Логин</span>
         <img src="~/assets/headerContent/icons/search.svg"/>
         <img src="~/assets/headerContent/icons/visibility.svg"/>
       </div>
@@ -32,17 +38,21 @@
               "Структура",
               "Форум «Вектор развития»",
               "Наставничество",
-              "Реестр образовательных организаций"],
+              "Логин"],
             showHamburger:false
           }
         },
       methods:{
-
+        showModal(){
+          this.$store.dispatch('login/doShowModal')
+        }
       },
       mounted(){
           document.getElementsByTagName('body')[0].addEventListener('click',()=>{
-            this.$refs.navMenu.classList.remove("active")
-            this.$refs.hamburger.classList.remove("active")
+            if(this.$refs.navMenu.classList.contains('active')){
+              this.$refs.navMenu.classList.remove("active")
+              this.$refs.hamburger.classList.remove("active")
+            }
           })
       }
     }
@@ -78,11 +88,18 @@
   .nav-menu__specials img{
     width: 1.1rem;
     height: 1.1rem;
+    margin-left:1.75rem;
   }
   .nav-menu__specials img:hover {
-    cursor: pointer; }
-  .nav-menu__specials img:first-child {
-    margin-right: 1.75rem; }
+    cursor: pointer;
+  }
+  .nav-menu__specials span{
+    color:white;
+    font-size: 14px;
+  }
+  .nav-menu__specials span:hover{
+    cursor:pointer
+  }
   .hamburger {
     display: none;
     margin-right: 1.5rem;

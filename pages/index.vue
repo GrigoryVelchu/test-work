@@ -40,12 +40,11 @@ import SliderCard from "../components/main/SliderCard";
 import UsefulLinksSlider from "../components/main/UsefulLinksSlider";
 import BlueLink from "../components/UI/BlueLink";
 import {mapGetters} from 'vuex'
+import LoginModal from "../components/UI/loginModal";
 export default {
   name: 'IndexPage',
-  components: {BlueLink, UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
-  data(){
-    return{}
-  },
+  components: {LoginModal, BlueLink, UsefulLinksSlider, SliderCard, Sidebar, NewsItem, Slider},
+
   computed:{
     ...mapGetters({
       usefulLinks:'usefulLinks/getUsefulLinks',

@@ -1,25 +1,25 @@
 <template>
 
-    <footer class = "footer">
-      <div class = "footer__container container">
-        <div class = 'footer__main-info'>
-          <div class = "footer__flag-block">
+    <footer class="footer">
+      <div class="footer__container container">
+        <div class="footer__main-info">
+          <div class="footer__flag-block">
             <img src="~/assets/footerContent/img/lip_flag.png"/>
-            <p class = "footer__site-name">
+            <p class="footer__site-name">
               Управление государственной службы и кадровой работы администрации Липецкой области
             </p>
           </div>
-          <div class = "footer__contacts">
-            <nuxt-link class = "footer__link" to="#">
-              <span class = "footer__adres">г. Липецк, пл. Ленина-Соборная,&nbsp1</span>
+          <div class="footer__contacts">
+            <nuxt-link class="footer__link" to="#">
+              <span class="footer__adres">г. Липецк, пл. Ленина-Соборная,&nbsp1</span>
             </nuxt-link>
-            <nuxt-link class = "footer__link" to="#">
-              <span class = "footer__tel">8 (4742) 22-84-45</span>
+            <nuxt-link class="footer__link" to="#">
+              <span class="footer__tel">8 (4742) 22-84-45</span>
             </nuxt-link>
           </div>
         </div>
         <hr>
-        <div class = "footer__down">
+        <div class="footer__down">
           <div>
             © 2015, Управление государственной службы и кадровой работы
             администрации Липецкой области

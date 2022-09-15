@@ -1,41 +1,34 @@
 <template>
-  <div class = "content">
-
-    <section class = "news-block">
-      <div class = "news-block__header">
+  <div class="content">
+    <section class="news-block">
+      <div class="news-block__header">
         <h2>
           Последние новости
         </h2>
         <BlueLink :address-to="'/news'">Показать всё</BlueLink>
       </div>
       <hr/>
-
-      <div class = "news-block__slider">
+      <div class="news-block__slider">
         <Slider :cardsInfo = "cardsInfo"/>
       </div>
       <hr/>
-
-      <div class = "news-block__news">
+      <div class="news-block__news">
         <div v-for ="newsItem in newsItems" :key="newsItem.id">
           <NewsItem :newsItem="newsItem" />
           <hr/>
         </div>
       </div>
-
     </section>
-
-    <aside class = "sidebar">
+    <aside class="sidebar">
       <Sidebar />
     </aside>
-
-    <section class = "useful-links">
+    <section class="useful-links">
       <h2>
         Полезные ссылки
       </h2>
       <hr>
       <UsefulLinksSlider :usefulLinks = "usefulLinks"/>
     </section>
-
   </div>
 </template>
 

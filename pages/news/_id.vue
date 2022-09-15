@@ -1,20 +1,20 @@
 <template>
-  <div class = 'news'>
-    <nuxt-link to='/news'>Все новости</nuxt-link>
-    <img :src = "require(`~/assets/newsItemContent/${getCurrentNews.imgSrc}.jpg`)">
-    <div class = "news__info">
-      <span class = 'gray-thin-text'>{{getCurrentNews.date}}</span>
+  <div class="news">
+    <nuxt-link to="/news">Все новости</nuxt-link>
+    <img :src="require(`~/assets/newsItemContent/${getCurrentNews.imgSrc}.jpg`)">
+    <div class="news__info">
+      <span class="gray-thin-text">{{getCurrentNews.date}}</span>
       <p>{{getCurrentNews.text}}</p>
     </div>
-    <div class = "news__nav-arrows">
+    <div class="news__nav-arrows">
       <span
-        :class = "{'disable': $route.params.id <= 1}"
-        @click = "doBack">
+        :class="{'disable': $route.params.id <= 1}"
+        @click="doBack">
         &lt; Назад
       </span>
       <span
-        :class = "{'disable': $route.params.id >= $store.state.newsItems.newsItems.length}"
-        @click = "doForward">
+        :class="{'disable': $route.params.id >= $store.state.newsItems.newsItems.length}"
+        @click="doForward">
          Вперед &gt;
       </span>
     </div>

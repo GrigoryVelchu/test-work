@@ -1,9 +1,9 @@
 <template>
-  <hooper :infiniteScroll="true"  style = "height: auto" :items-to-show="4.3" :auto-play="true" :playSpeed="2000">
-    <slide v-for= "usefulLink in usefulLinks" :key = "usefulLink.id">
-      <useful-link :usefulLink = "usefulLink"/>
+  <hooper :infiniteScroll="true"  style="height: auto" :items-to-show="4.3" :auto-play="true" :playSpeed="2000">
+    <slide v-for="usefulLink in usefulLinks" :key="usefulLink.id">
+      <useful-link :usefulLink="usefulLink"/>
     </slide>
-    <navigation slot = "hooper-addons"></navigation>
+    <navigation slot="hooper-addons"></navigation>
   </hooper>
 </template>
 

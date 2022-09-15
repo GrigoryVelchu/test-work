@@ -1,9 +1,9 @@
 <template>
-      <nuxt-link to="#" tag = 'div' class = 'useful-link'>
-          <div class = "useful-link__title">
+      <nuxt-link to="#" tag="div" class="useful-link">
+          <div class="useful-link__title">
             {{usefulLink.title}}
           </div>
-          <span class = "useful-link__adres">
+          <span class="useful-link__adres">
             {{usefulLink.linkText}}
           </span>
       </nuxt-link>

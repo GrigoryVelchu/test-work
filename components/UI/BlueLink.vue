@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class = "blue-link" :to="addressTo">
+  <nuxt-link class="blue-link" :to="addressTo">
     <slot></slot>&nbsp &#8594
   </nuxt-link>
 </template>

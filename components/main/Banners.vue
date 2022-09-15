@@ -1,6 +1,6 @@
 <template>
-    <div class = "banners">
-      <nuxt-link v-for = "item in bannersItem" :to = "item.linkTo" :key = "item.id" >
+    <div class="banners">
+      <nuxt-link v-for="item in bannersItem" :to="item.linkTo" :key="item.id" >
         <img :src="require(`~/assets/sidebarContent/bannersImg/${item.imgSrc}.jpg`)">
       </nuxt-link>
     </div>

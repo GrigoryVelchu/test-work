@@ -1,6 +1,6 @@
 <template>
-  <header class = "header">
-    <div class = "container">
+  <header class="header">
+    <div class="container">
       <MyNav/>
       <h1>Управление государственной службы и кадровой работы администрации Липецкой области</h1>
     </div>

@@ -1,9 +1,9 @@
 <template>
   <hooper :infiniteScroll="true" style = "height: auto" :items-to-show="1" :center-mode="true">
-    <slide v-for = "cardInfo in cardsInfo" :key = "cardInfo.id">
-      <SliderCard :cardInfo = "cardInfo"/>
+    <slide v-for="cardInfo in cardsInfo" :key="cardInfo.id">
+      <SliderCard :cardInfo="cardInfo"/>
     </slide>
-    <pagination slot = "hooper-addons"></pagination>
+    <pagination slot="hooper-addons"></pagination>
   </hooper>
 </template>
 

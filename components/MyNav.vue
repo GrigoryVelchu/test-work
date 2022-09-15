@@ -1,14 +1,14 @@
 <template>
-    <nav class = "nav-menu">
-      <img class ="nav_menu__flag"  @click = "$router.push('/')" src = "~/assets/headerContent/img/lip-flag.png" alt = 'Липецкий герб'>
-      <div class = "nav-menu__items" :class="{'active':showHamburger}" ref="navMenu">
-        <nuxt-link class = "nav-menu__item" v-for="item in items" exact to = "/" :key = "item">{{item}}</nuxt-link>
+    <nav class="nav-menu">
+      <img class="nav_menu__flag"  @click = "$router.push('/')" src="~/assets/headerContent/img/lip-flag.png" alt="Липецкий герб">
+      <div class="nav-menu__items" :class="{'active':showHamburger}" ref="navMenu">
+        <nuxt-link class = "nav-menu__item" v-for="item in items" exact to="/" :key="item">{{item}}</nuxt-link>
       </div>
-      <div class = "nav-menu__specials">
-        <img src = "~/assets/headerContent/icons/search.svg"/>
-        <img src = "~/assets/headerContent/icons/visibility.svg"/>
+      <div class="nav-menu__specials">
+        <img src="~/assets/headerContent/icons/search.svg"/>
+        <img src="~/assets/headerContent/icons/visibility.svg"/>
       </div>
-      <div class="hamburger" :class="{'active':showHamburger}" ref = "hamburger" @click.stop = 'showHamburger = !showHamburger'>
+      <div class="hamburger" :class="{'active':showHamburger}" ref="hamburger" @click.stop="showHamburger = !showHamburger">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>

@@ -1,16 +1,16 @@
 <template>
-  <div class = "card">
-    <div class = "card__image">
-      <img :src = "require(`~/assets/sliderCardContent/${cardInfo.imgSrc}.jpg`)" width="486px"/>
+  <div class="card">
+    <div class="card__image">
+      <img :src="require(`~/assets/sliderCardContent/${cardInfo.imgSrc}.jpg`)" width="486px"/>
     </div>
-    <div class = "card__info">
-      <span class = "card__date gray-thin-text">
+    <div class="card__info">
+      <span class="card__date gray-thin-text">
         {{cardInfo.date}}
       </span>
-      <h3 class = "card__title">
+      <h3 class="card__title">
         {{cardInfo.title}}
       </h3>
-      <p class = "card__text">
+      <p class="card__text">
         {{cardInfo.text}}
       </p>
       <BlueLink :address-to="'/post'">Читать далее</BlueLink>

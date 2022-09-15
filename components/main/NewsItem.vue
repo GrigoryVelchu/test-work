@@ -1,13 +1,13 @@
 <template>
-<div class = "news-item">
-  <div class = "news-item__img">
-  <img :src = "require(`~/assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
+<div class="news-item">
+  <div class="news-item__img">
+  <img :src="require(`~/assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
   </div>
-  <div class = "news-item__info">
-    <span class = "news-item__data gray-thin-text">
+  <div class="news-item__info">
+    <span class="news-item__data gray-thin-text">
       {{newsItem.date}}
     </span>
-    <p class = news-item__text>
+    <p class="news-item__text">
       {{newsItem.text}}
     </p>
     <BlueLink :address-to="`/news/${newsItem.id}`">Читать далее</BlueLink>

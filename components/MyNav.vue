@@ -38,7 +38,7 @@
               "Структура",
               "Форум «Вектор развития»",
               "Наставничество",
-              "Логин"],
+              "Создать новость"],
             showHamburger:false
           }
         },
@@ -54,6 +54,9 @@
               this.$refs.hamburger.classList.remove("active")
             }
           })
+        if(localStorage.getItem('token')){
+          console.log('it works')
+        }
       }
     }
 </script>

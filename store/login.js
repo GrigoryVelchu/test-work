@@ -8,22 +8,29 @@ export const state = () => {
   }
 }
 export const actions = {
-  writeTokenLocal({state}){
-    localStorage.setItem('token', true)
+  writeTokenLocal({state,commit}){
+    console.log('in WriteToken')
+    commit('setToken')
+    localStorage.setItem('token', state.token)
   },
   doShowModal({state,commit}){
-    commit('setShowModal',{value : true})
+    if (state.token===false && state.showModal===false){
+      commit('setShowModal',{value : true})
+    }
   },
   hideModal({state,commit}){
-    if(state.showModal===true){
       commit('setShowModal',{value : false})
-    }
   },
   doLoginInput({state,commit}, payload){
     commit('setLoginInput',{value : payload.target.value})
   },
   doPasswordInput({state,commit}, payload){
     commit('setPasswordInput',{value : payload.target.value})
+  },
+  doAuth({state, getters, dispatch}){
+    if(getters.checkOut){
+      dispatch('writeTokenLocal')
+    }
   },
 }
 export const getters = {
@@ -39,7 +46,13 @@ export const getters = {
   getPasswordInput(state){
     return state.passwordInput
   },
+  checkOut(state,dispatch){
+    if(state.loginInput === state.loginData.login && state.passwordInput === state.loginData.password)
+    console.log('checked!!!')
+    return state.loginInput === state.loginData.login && state.passwordInput === state.loginData.password
+  }
 }
+
 export const mutations = {
   setShowModal(state, payload){
     state.showModal = payload.value
@@ -49,5 +62,8 @@ export const mutations = {
   },
   setPasswordInput(state, payload){
     state.passwordInput = payload.value
+  },
+  setToken(state){
+    state.token = true
   }
 }

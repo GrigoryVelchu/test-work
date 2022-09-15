@@ -1,11 +1,11 @@
 <template>
-  <div class="login" @click.self ="hideModal" v-if="$store.state.login.showModal">
+  <div class="login" @click.self ="hideModal"  v-if="$store.state.login.showModal">
 
-    <form action="">
+    <form @submit.prevent="doAuth" @keydown.esc="hideModal">
       <blue-link :addressTo="'/'">На главную</blue-link>
       <input :value="loginInput" @change="doLoginInput" type="text" placeholder="Логин"/>
       <input :value="passwordInput" @input="doPasswordInput" type="text" placeholder="Пароль"/>
-      <button type="submit">Подтвердить</button>
+      <button type="submit" >Подтвердить</button>
     </form>
 
   </div>
@@ -22,11 +22,12 @@
       ...mapActions({
         doLoginInput:'login/doLoginInput',
         doPasswordInput:'login/doPasswordInput',
-        hideModal:'login/hideModal'
+        hideModal:'login/hideModal',
+        doAuth:'login/doAuth'
       }),
     },
     computed:{
-      ...mapGetters({loginInput:'login/getLoginInput', passwordInput:"login/getPasswordInput"}),
+      ...mapGetters({loginInput:'login/getLoginInput', passwordInput:"login/getPasswordInput", checkOut:"login/checkOut"}),
     }
   }
 </script>

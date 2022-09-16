@@ -8,6 +8,8 @@
                    :key="item">
           {{item}}
         </nuxt-link>
+        <span v-if="getToken" class = "nav-menu__item" @click="disableToken">Разлогиниться</span>
+        <nuxt-link v-if="getToken" class = "nav-menu__item" to="'/'">Создать новость</nuxt-link>
       </div>
       <div class="nav-menu__specials">
         <span @click="showModal">Логин</span>
@@ -23,6 +25,7 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex"
     export default {
         name: "MyNav",
         data(){
@@ -37,15 +40,23 @@
               "Кадровая стратегия",
               "Структура",
               "Форум «Вектор развития»",
-              "Наставничество",
-              "Создать новость"],
+              "Наставничество"],
             showHamburger:false
           }
         },
+
       methods:{
         showModal(){
           this.$store.dispatch('login/doShowModal')
-        }
+        },
+        ...mapActions({disableToken:'login/disableTokenLocal'})
+
+      },
+      computed:{
+        ...mapGetters({getToken:'login/getToken'})
+      },
+      created(){
+
       },
       mounted(){
           document.getElementsByTagName('body')[0].addEventListener('click',()=>{
@@ -54,9 +65,7 @@
               this.$refs.hamburger.classList.remove("active")
             }
           })
-        if(localStorage.getItem('token')){
-          console.log('it works')
-        }
+        if(!localStorage.token){localStorage.setItem('token', false)};
       }
     }
 </script>

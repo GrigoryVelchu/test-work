@@ -9,8 +9,11 @@ export const state = () => {
 }
 export const actions = {
   writeTokenLocal({state,commit}){
-    console.log('in WriteToken')
-    commit('setToken')
+    commit('setToken', {token:true})
+    localStorage.setItem('token', state.token)
+  },
+  disableTokenLocal({state,commit}){
+    commit('setToken', {token:false})
     localStorage.setItem('token', state.token)
   },
   doShowModal({state,commit}){
@@ -47,8 +50,6 @@ export const getters = {
     return state.passwordInput
   },
   checkOut(state,dispatch){
-    if(state.loginInput === state.loginData.login && state.passwordInput === state.loginData.password)
-    console.log('checked!!!')
     return state.loginInput === state.loginData.login && state.passwordInput === state.loginData.password
   }
 }
@@ -63,7 +64,7 @@ export const mutations = {
   setPasswordInput(state, payload){
     state.passwordInput = payload.value
   },
-  setToken(state){
-    state.token = true
+  setToken(state,payload){
+    state.token = payload.token
   }
 }

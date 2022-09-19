@@ -9,10 +9,10 @@
              type="file">
       <div class="create__right-side">
         <div>
-          <input :value="title"  type="text" placeholder="Заголовок">
-          <input :value="date" type="date" placeholder="Дата">
+          <input v-model="title"  type="text" placeholder="Заголовок">
+          <input v-model="date" type="date" placeholder="Дата">
         </div>
-        <textarea :value="text" class="create__news-text" placeholder="Текст новости"></textarea>
+        <textarea v-model="text" class="create__news-text" placeholder="Текст новости"></textarea>
         <input type="submit">
       </div>
     </form>
@@ -47,13 +47,11 @@
         return {
           id:this.$store.state.newsItems.newsItems.length+1,
           img:this.img,
+          date:this.date,
           title:this.title,
           text:this.text,
         }
       },
-      getImg(){
-        return this.img
-      }
     }
     ,
   }

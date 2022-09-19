@@ -9,7 +9,7 @@
           {{item}}
         </nuxt-link>
         <span v-if="getToken" class = "nav-menu__item" @click="disableToken">Разлогиниться</span>
-        <nuxt-link v-if="getToken" class = "nav-menu__item" to="'/'">Создать новость</nuxt-link>
+        <nuxt-link v-if="getToken" class = "nav-menu__item" to="news/create">Создать новость</nuxt-link>
       </div>
       <div class="nav-menu__specials">
         <span @click="showModal">Логин</span>
@@ -65,7 +65,7 @@
               this.$refs.hamburger.classList.remove("active")
             }
           })
-        if(!localStorage.token){localStorage.setItem('token', false)};
+        localStorage.setItem('token', this.getToken);
       }
     }
 </script>

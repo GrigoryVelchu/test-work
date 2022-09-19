@@ -2,8 +2,9 @@ export const state = () =>{
   return{
     newsPost:{
       id:0,
-      img:'',
+      imgSrc:'',
       title:'',
+      date:'',
       text:''
     },
   }
@@ -11,8 +12,9 @@ export const state = () =>{
 export const mutations={
   setNewsPost(state,payload){
     state.newsPost.id = payload.id
-    state.newsPost.img = payload.img
+    state.newsPost.imgSrc = payload.img
     state.newsPost.title = payload.title
+    state.newsPost.date = payload.date
     state.newsPost.text = payload.text
     console.log(state.newsPost)
   }

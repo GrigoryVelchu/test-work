@@ -1,7 +1,7 @@
 <template>
   <div class="news">
     <nuxt-link to="/news">Все новости</nuxt-link>
-    <img :src="require(`~/assets/newsItemContent/${getCurrentNews.imgSrc}.jpg`)">
+    <img :src= "getCurrentNews.imgSrc.includes('data') ? getCurrentNews.imgSrc : require(`~/assets/newsItemContent/${getCurrentNews.imgSrc}.jpg`)">
     <div class="news__info">
       <span class="gray-thin-text">{{getCurrentNews.date}}</span>
       <p>{{getCurrentNews.text}}</p>
@@ -25,8 +25,8 @@
   import BlueLink from "../../components/UI/BlueLink";
   export default {
     components: {BlueLink},
-    validate({params}){
-      return /^\d+$/.test(params.id)
+    validate({params, store}){
+      return /^\d+$/.test(params.id) && params.id <= store.state.newsItems.newsItems.length;
     },
     async asyncData({params}){
       const id = parseInt(params.id)
@@ -58,6 +58,9 @@
     display: flex;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    img{
+      width: 250px;
+    }
     a{
       width:100%;
       margin-bottom: 2rem;

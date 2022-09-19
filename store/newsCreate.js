@@ -21,12 +21,15 @@ export const mutations={
 }
 export const getters = {
   getNewsPost(state){
+    console.log(state.newsPost)
     return state.newsPost
   }
 }
 export const actions={
-  doNewsPost({state,commit}, payload){
+  doNewsPost({state,commit,dispatch,getters}, payload){
+    console.log('in do new Post')
     console.log(payload)
     commit('setNewsPost', payload)
+    dispatch('newsItems/addNewsItem', getters.getNewsPost, {root:true})
   }
 }

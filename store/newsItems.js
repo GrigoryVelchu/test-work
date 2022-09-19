@@ -116,6 +116,11 @@ export const mutations = {
   },
   setSearchedAndFilteredItems(s, payload){
     s.searchedAndFilteredItems = payload.items
+  },
+  setNewNewsItem(state,payload){
+    let item = payload.newsItem
+    item.date = payload.getStringFormat(item.date)
+    state.newsItems.push(item)
   }
 }
 export const actions = {
@@ -124,10 +129,10 @@ export const actions = {
       'setFilteredItems',
       {items : [...state.newsItems].sort((news1,news2)=>{
                   if(state.searchedFilter === 'oldest'){
-                    return new Date(getters.doDateFormat(news1.date))  - new Date(getters.doDateFormat(news2.date))
+                    return new Date(getters.getDateFormat(news1.date))  - new Date(getters.getDateFormat(news2.date))
                   }
                   else if(state.searchedFilter === 'newest'){
-                    return new Date(getters.doDateFormat(news2.date))  - new Date(getters.doDateFormat(news1.date))
+                    return new Date(getters.getDateFormat(news2.date))  - new Date(getters.getDateFormat(news1.date))
                   }
                   else return state.newsItems
         })
@@ -141,6 +146,9 @@ export const actions = {
       }
     )
   },
+  addNewsItem({commit, state,getters}, newsItem){
+    commit('setNewNewsItem', {newsItem:newsItem, getStringFormat:getters.getStringFormat})
+  }
 }
 export const getters = {
   getNewsItems(state){
@@ -149,7 +157,7 @@ export const getters = {
   getSearchedAndFilteredItems(state){
     return state.searchedAndFilteredItems
   },
-  doDateFormat: state => text => {
+  getDateFormat: state => text => {
     const months = new Map([
       ['янв',0],
       ['фев',1],
@@ -175,7 +183,7 @@ export const getters = {
     let [year, thisMonth, day] = splitedText.reverse().map(el=>parseInt(el))
     return new Date (year, thisMonth, day)
   },
-  doStringFormat: state => date => {
+  getStringFormat: state => date => {
     const months = new Map([
       ['янв',0],
       ['фев',1],
@@ -190,7 +198,14 @@ export const getters = {
       ['ноя',10],
       ['дек',11],
     ]);
-    return{}
+    const day = new Date(date).getDate();
+    const year = new Date(date).getFullYear();
+    const month = new Date(date).getMonth();
+    let monthString = ''
+    months.forEach((value,key)=>{
+      if (month === value){monthString = key}
+    })
+    return `${day} ${monthString} ${year}`
   }
 }
 

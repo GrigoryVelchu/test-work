@@ -1,7 +1,7 @@
 <template>
   <div class="create">
     <h2>Создание новости</h2>
-    <form @submit.prevent="doNewsPost(getNewsItem)" >
+    <form @submit.prevent="addNewsPost" >
       <input :class="{'loaded':img.length}"
              :style = "{backgroundImage:img.length&&`url(${img})`}"
              @change="onUploadFiles($event)"
@@ -33,6 +33,13 @@
     },
     methods:{
       ...mapActions({doNewsPost:'newsCreate/doNewsPost'}),
+      addNewsPost(){
+        this.doNewsPost(this.getNewsItem);
+        this.img = ''
+        this.date =''
+        this.text = ''
+        this.title = ''
+      },
       onUploadFiles(e){
         let file = e.target.files[0]
         const reader = new FileReader()
@@ -46,8 +53,8 @@
       getNewsItem() {
         return {
           id:this.$store.state.newsItems.newsItems.length+1,
-          img:this.img,
-          date:this.date,
+          img:this.img.length?this.img:"news-image1",
+          date:this.date.length ? this.date : new Date(),
           title:this.title,
           text:this.text,
         }

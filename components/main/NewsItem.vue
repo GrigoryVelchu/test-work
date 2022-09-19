@@ -1,7 +1,7 @@
 <template>
 <div class="news-item">
   <div class="news-item__img">
-  <img :src="require(`~/assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
+  <img  :src= "newsItem.imgSrc.includes('data') ? newsItem.imgSrc : require(`~/assets/newsItemContent/${newsItem.imgSrc}.jpg`)"/>
   </div>
   <div class="news-item__info">
     <span class="news-item__data gray-thin-text">
@@ -36,6 +36,9 @@
     .news-item__img
       width: 250px
       margin-right: 1rem
+      flex-shrink: 0
+      img
+        width: 100%
     .news-item__info
       display: flex
       flex-direction: column

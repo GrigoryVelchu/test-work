@@ -33,6 +33,10 @@ export const actions = {
   doAuth({state, getters, dispatch}){
     if(getters.checkOut){
       dispatch('writeTokenLocal')
+      dispatch('hideModal')
+    }
+    else{
+      alert('Не правильно введен пароль. Login - qwerty, Пароль - 123456')
     }
   },
 }
